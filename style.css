@@ -23,23 +23,46 @@ header {
 
   .header-container{
     display: flex;
-    justify-content: center;
-    align-items:center;
-    flex-direction: column;
-    padding: 10px 20px;
-  }
-
-
-.header-container nav ul{
-    display: flex;
     justify-content: space-between;
+    align-items:center;
     gap: 2rem;
+    padding: 10px 46px;
+   
+
+    nav{
+    padding: 1.2rem;
+      ul{
+        display: flex;
+        justify-content: space-between;
+        gap: 2rem;
+        list-style: none;
+        li{
+          a{
+            text-decoration: none;
+            color: black;
+          }
+        }
+      }
+    }
   }
 
-.header-container nav ul li a{
-   text-decoration: none;
-   color: black;
+  .search-container{
+    form{
+     input{
+      padding: .6rem;
+      border-radius: 0.5rem;
+      border: none;
+     }
+     button{
+      padding: 0.6rem;
+      border-radius: 0.5rem;
+      border:none;
+      color:black
+
+     }
+    }
   }
+
 
   h2{
     font-size: 2rem;
@@ -54,7 +77,7 @@ header {
     gap: 2rem;
     align-items: center;
     justify-content: center;
-    padding: 2rem 10rem;
+    padding: 5rem 10rem;
 }
 
 
@@ -65,11 +88,10 @@ header {
     align-items: center;
     padding: 0.7rem;
 
-}
-
-.product-card h3{
-   color:black;
-   font-size: 18px;
+    h3{
+      color:black;
+      font-size: 18px;
+    }
 
 }
 
@@ -91,5 +113,19 @@ header {
     cursor: pointer;
     width: 100%;
     text-align: center;
+}
+
+.footer-container{
+  display: flex;
+     justify-content:space-around;
+     align-items: center;
+      gap: 5rem;
+  background-color: grey;
+  padding: 2rem 2rem;
+
+  ul{
+    list-style: none;
+    color: black;
+  }
 }
 
