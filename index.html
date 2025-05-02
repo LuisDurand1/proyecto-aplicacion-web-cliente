@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Productos de Computacion</title>
+    <title>TechNova</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -12,7 +12,7 @@
     <header>
         <div class="header-container">
             <div>
-                <h1>TechNova</h1>
+             <a href="./index.html" id="title"><h1>TechNova</h1> </a>
             </div>
             <div class="nav-container">
                 <div class="search-container">
@@ -34,53 +34,162 @@
                     <li><a href="">Hardware</a> </li>
                     <li><a href="">Perifericos</a> </li>
                     <li><a href="">Notebook</a> </li>
-                    <li><a href="">Monitores</a> </li>
-                    <li><a href="">Pcs Armadas</a></li>
+                    <li><a href="./sections/contact_form.html">Reclamos</a></li>
                 </ul>
             </nav>
         </div>
     </header>
     <main>
-        <section class="products-featured">
-            <div class="cont">
-                <div>
-                    <h2>Productos destacados</h2>
+        <section class="products-filter-mobile">
+            <div class="filter-container-mobile">
+                <div class="order-container">
+                    <div onclick="toggleDropdownForOrder()" class="order-button">
+                        <h4>Ordenar</h4>
+                    </div>
+                    <div class="dropdown">
+                        <div class="prices">
+                            <a id="low-price" href="#">Menor precio</a>
+                            <a id="high-price" href="#">Mayor precio</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="cards-container">
-                    <div class="product-card">
-                        <div class="img">
-                            <img src="./img/teclado.png" alt="Product Image">
-                        </div>
-                        <h3>Teclado mecánico compacto G915 TKL RGB inalámbrico LIGHTSPEED</h3>
-                        <div class="price">$50000</div>
-                        <div class="buy-button"> Comprar</div>
+                <div onclick="toggleDropdownForFilter()" class="filter-container">
+                    <div class="filter-button">
+                        <h4>Filtrar</h4>
                     </div>
-                    <div class="product-card">
-                        <div class="img">
-                            <img src="./img/teclado.png" alt="Product Image">
-                        </div>
-                        <h3>Teclado mecánico compacto G915 TKL RGB inalámbrico LIGHTSPEED</h3>
-                        <div class="price">$50000</div>
-                        <div class="buy-button"> Comprar</div>
-                    </div>
-                    <div class="product-card">
-                        <div class="img">
-                            <img src="./img/teclado.png" alt="Product Image">
-                        </div>
-                        <h3>Teclado mecánico compacto G915 TKL RGB inalámbrico LIGHTSPEED</h3>
-                        <div class="price">$50000</div>
-                        <div class="buy-button"> Comprar</div>
-                    </div>
-                    <div class="product-card">
-                        <div class="img">
-                            <img src="./img/teclado.png" alt="Product Image">
-                        </div>
-                        <h3>Teclado mecánico compacto G915 TKL RGB inalámbrico LIGHTSPEED</h3>
-                        <div class="price">$50000</div>
-                        <div class="buy-button"> Comprar</div>
+                    <div class="dropdown-filter">
+                        <form class="price-range" action="#" method="get">
+                            <input type="text" id="min-price" name="min" placeholder="Desde">
+                            <span style="align-self: center;">-</span>
+                            <input type="text" id="max-price" name="max" placeholder="Hasta">
+                            <button type="submit" class="send-button"><svg viewBox="0 0 16 10"
+                                    xmlns="http://www.w3.org/2000/svg" width=".9em" color="white"
+                                    class="sc-bc0a7e8f-0 bdERyW"
+                                    style="transform: rotate(90deg); fill: rgb(255, 255, 255);">
+                                    <path
+                                        d="M15.56 9.688a.633.633 0 0 1-.746-.03l-.073-.07-6.849-7.925-6.628 7.918a.627.627 0 0 1-.727.16l-.09-.048a.55.55 0 0 1-.253-.458c0-.093.025-.185.073-.267l.055-.078L7.412.418A.616.616 0 0 1 7.88.205c.144-.001.284.047.394.134l.075.073 7.323 8.47a.537.537 0 0 1-.112.806Z">
+                                    </path>
+                                </svg></button>
+                        </form>
                     </div>
                 </div>
             </div>
+        </section>
+        <section class="products-page">
+            <aside class="products-filter-desktop">
+                <div>
+                    <div class="order-by">
+                        <label for="orden">Ordenar por:</label>
+                        <select id="orden" name="orden">
+                            <option value="precio_asc">Menor precio</option>
+                            <option value="precio_desc">Mayor precio</option>
+                        </select>
+                    </div>
+                    <section class="filter_by">
+                        <span>Precios</span>
+                        <div class="filter_by_price_container">
+                            <form class="price-range" action="#" method="get">
+                                <input type="text" id="min-price" name="min" placeholder="Desde">
+                                <span style="align-self: center;">-</span>
+                                <input type="text" id="max-price" name="max" placeholder="Hasta">
+
+                                <button type="submit" class="send-button"><svg viewBox="0 0 16 10"
+                                        xmlns="http://www.w3.org/2000/svg" width=".9em" color="white"
+                                        class="sc-bc0a7e8f-0 bdERyW"
+                                        style="transform: rotate(90deg); fill: rgb(255, 255, 255);">
+                                        <path
+                                            d="M15.56 9.688a.633.633 0 0 1-.746-.03l-.073-.07-6.849-7.925-6.628 7.918a.627.627 0 0 1-.727.16l-.09-.048a.55.55 0 0 1-.253-.458c0-.093.025-.185.073-.267l.055-.078L7.412.418A.616.616 0 0 1 7.88.205c.144-.001.284.047.394.134l.075.073 7.323 8.47a.537.537 0 0 1-.112.806Z">
+                                        </path>
+                                    </svg></button>
+                            </form>
+                        </div>
+                    </section>
+                </div>
+            </aside>
+            <div class="products-content">
+            <section class="products-featured">
+                <div class="cont">
+                    <div>
+                        <h2>Productos destacados</h2>
+                    </div>
+                    <div class="cards-container">
+                        <div class="product-card">
+                            <div class="img">
+                                <img src="./img/teclado.png" alt="Product Image">
+                            </div>
+                            <h3>Teclado mecánico compacto G915 TKL RGB inalámbrico LIGHTSPEED</h3>
+                            <div class="price">$50000</div>
+                            <div class="buy-button"> Comprar</div>
+                        </div>
+                        <div class="product-card">
+                            <div class="img">
+                                <img src="./img/teclado.png" alt="Product Image">
+                            </div>
+                            <h3>Teclado mecánico compacto G915 TKL RGB inalámbrico LIGHTSPEED</h3>
+                            <div class="price">$50000</div>
+                            <div class="buy-button"> Comprar</div>
+                        </div>
+                        <div class="product-card">
+                            <div class="img">
+                                <img src="./img/teclado.png" alt="Product Image">
+                            </div>
+                            <h3>Teclado mecánico compacto G915 TKL RGB inalámbrico LIGHTSPEED</h3>
+                            <div class="price">$50000</div>
+                            <div class="buy-button"> Comprar</div>
+                        </div>
+                        <div class="product-card">
+                            <div class="img">
+                                <img src="./img/teclado.png" alt="Product Image">
+                            </div>
+                            <h3>Teclado mecánico compacto G915 TKL RGB inalámbrico LIGHTSPEED</h3>
+                            <div class="price">$50000</div>
+                            <div class="buy-button"> Comprar</div>
+                        </div>
+                        <div class="product-card">
+                            <div class="img">
+                                <img src="./img/teclado.png" alt="Product Image">
+                            </div>
+                            <h3>Teclado mecánico compacto G915 TKL RGB inalámbrico LIGHTSPEED</h3>
+                            <div class="price">$50000</div>
+                            <div class="buy-button"> Comprar</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="month-offers">
+                <div class="cont">
+                    <div>
+                        <h2>Ofertas del mes</h2>
+                    </div>
+                    <div class="cards-container">
+                        <div class="product-card">
+                            <div class="img">
+                                <img src="./img/teclado.png" alt="Product Image">
+                            </div>
+                            <h3>Teclado mecánico compacto G915 TKL RGB inalámbrico LIGHTSPEED</h3>
+                            <div class="price">$50000</div>
+                            <div class="buy-button"> Comprar</div>
+                        </div>
+                        <div class="product-card">
+                            <div class="img">
+                                <img src="./img/teclado.png" alt="Product Image">
+                            </div>
+                            <h3>Teclado mecánico compacto G915 TKL RGB inalámbrico LIGHTSPEED</h3>
+                            <div class="price">$50000</div>
+                            <div class="buy-button"> Comprar</div>
+                        </div>
+                        <div class="product-card">
+                            <div class="img">
+                                <img src="./img/teclado.png" alt="Product Image">
+                            </div>
+                            <h3>Teclado mecánico compacto G915 TKL RGB inalámbrico LIGHTSPEED</h3>
+                            <div class="price">$50000</div>
+                            <div class="buy-button"> Comprar</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
         </section>
     </main>
     <footer>
@@ -97,10 +206,11 @@
                 <li>Cookies</li>
             </ul>
 
-            <div> &copy; 2023 Productos de Computación. Todos los derechos reservados.</div>
+            <div> &copy; 2025 Productos de Computación. Todos los derechos reservados.</div>
 
         </div>
     </footer>
+    <script src="./script.js"></script>
 </body>
 
 </html>
