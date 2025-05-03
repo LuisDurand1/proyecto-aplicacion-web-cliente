@@ -363,6 +363,10 @@ footer {
     justify-content: flex-start;
     gap: 5px;
   }
+
+  .filter-and-order-container {
+    padding: 1rem 3rem;
+   }
   
 }
 
@@ -390,11 +394,6 @@ footer {
   #max-price {
     font-size: 8px;
   }
-
-  .filter-and-order-container {
-   padding: 1rem 3rem;
-  }
-
 }
 
 @media (min-width: 1200px) {
