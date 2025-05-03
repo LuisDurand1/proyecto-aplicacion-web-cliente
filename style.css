@@ -56,6 +56,7 @@ nav ul {
   justify-content: center;
   gap: 1.5rem;
   list-style: none;
+  align-items: center;
 }
 
 nav ul li a {
@@ -97,14 +98,19 @@ h2 {
 .order-by {
   padding: 1rem .5rem;
   margin-top: 4rem;
+  font-size: 13px;
 }
 
-.filter_by {
+.filter-by {
   padding: 1rem .5rem;
 
   span {
-    margin-bottom: .8rem;
+    font-size: .8rem;
   }
+}
+
+.filter-by-price-container{
+  margin-top: .5rem;
 }
 
 #max-price,
@@ -296,19 +302,19 @@ footer {
   flex-direction: column;
   gap: 1rem;
   align-items: center;
-  background-color: white;
+  background-color: #2C3E50;
   padding: 1rem;
 }
 
 .footer-container ul {
   list-style: none;
-  color: #636363;
+  color: #CCCCCC;
 }
 
 .footer-container ul li,
 .footer-container div {
   font-size: 0.8rem;
-  color: #636363;
+  color: #CCCCCC;
 }
 
 
@@ -357,6 +363,7 @@ footer {
     justify-content: flex-start;
     gap: 5px;
   }
+  
 }
 
 @media (min-width: 992px) {
@@ -370,18 +377,22 @@ footer {
   }
 
   .send-button {
-    width: 1.2rem;
-    height: 1.2rem;
+    width: 1rem;
+    height: 1rem;
     font-size: 12px;
   }
 
   #min-price {
 
-    font-size: 12px;
+    font-size: 8px;
   }
 
   #max-price {
-    font-size: 12px;
+    font-size: 8px;
+  }
+
+  .filter-and-order-container {
+   padding: 1rem 3rem;
   }
 
 }
@@ -396,10 +407,7 @@ footer {
     gap: 1.8rem;
   }
 
-  .send-button {
-
-    height: 1.2rem;
-  }
+  
 
   .product-card {
     width: 18%;
@@ -413,11 +421,11 @@ footer {
 
   #min-price {
 
-    font-size: 14px;
+    font-size: 11px;
   }
 
   #max-price {
-    font-size: 14px;
+    font-size: 11px;
   }
 
   .products-filter-desktop {
