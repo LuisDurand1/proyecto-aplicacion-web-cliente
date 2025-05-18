@@ -1,0 +1,34 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "name": "Teclado mecánico compacto G915 TKL RGB inalámbrico LIGHTSPEED",
+            "price": 50000,
+            "image": "./img/mouseLogi.jpg"
+        },
+        {
+            "id": 1,
+            "name": "Teclado mecánico compacto G915 TKL RGB inalámbrico LIGHTSPEED",
+            "price": 50000,
+            "image": "./img/placa.jpg"
+        },
+        {
+            "id": 1,
+            "name": "Teclado mecánico compacto G915 TKL RGB inalámbrico LIGHTSPEED",
+            "price": 50000,
+            "image": "./img/AsusWebcam.png"
+        },
+        {
+            "id": 1,
+            "name": "Teclado mecánico compacto G915 TKL RGB inalámbrico LIGHTSPEED",
+            "price": 50000,
+            "image": "./img/AuriHyperx.jpg"
+        },
+        {
+            "id": 1,
+            "name": "Teclado mecánico compacto G915 TKL RGB inalámbrico LIGHTSPEED",
+            "price": 50000,
+            "image": "./img/TecladoHyperx.jpg"
+        }
+    ]
+}

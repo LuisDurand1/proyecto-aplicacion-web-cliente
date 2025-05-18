@@ -1,0 +1,22 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "name": "Teclado mecánico compacto G915 TKL RGB inalámbrico LIGHTSPEED",
+            "price": 50000,
+            "image": "./img/MicHyperx.webp"
+        },
+        {
+            "id": 1,
+            "name": "Teclado mecánico compacto G915 TKL RGB inalámbrico LIGHTSPEED",
+            "price": 50000,
+            "image": "./img/monitorLG.jpeg"
+        },
+        {
+            "id": 1,
+            "name": "Teclado mecánico compacto G915 TKL RGB inalámbrico LIGHTSPEED",
+            "price": 50000,
+            "image": "./img//gabinete.jpg"
+        }
+    ]
+}
