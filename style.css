@@ -230,6 +230,7 @@ h2 {
 
 .products-page {
   display: flex;
+  flex-direction: column;
 }
 
 .products-featured {

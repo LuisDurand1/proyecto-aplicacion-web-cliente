@@ -1,3 +1,8 @@
+const API_TOKEN= 'patu4rl1RgVOkZQmf.63aefb3d103dd693730bff34df288a03b8a61bb495720383b51761c7f6a909e4'; 
+const BASE_ID = 'appbMQJ3qhcx04rtO';
+const API_URL = `https://api.airtable.com/v0/${BASE_ID}/`;
+
+
 function toggleDropdownForOrder() {
     const dropdownMenu = document.querySelector('.dropdown');
     const isVisible = dropdownMenu && dropdownMenu.style.display === 'flex';
@@ -13,14 +18,20 @@ function toggleDropdownForFilter() {
 }
 
 
-const getProducts = async () => {
-    const response = await fetch('https://dummyjson.com/products?limit=100');
-    const data = await response.json();
-    console.log(data.products);
+
+const getProducts = async (container) => {
+   await fetch(API_URL+container.dataset.table, {
+        method: 'GET',
+        headers:{
+            'Authorization': `Bearer ${API_TOKEN}`,
+            'Content-Type': 'application/json'
+        }
+    }).then(res => res.json())
+      .then(data => {
+        mapProducts(data.records, container);
+      })
+      .catch(err => console.error('Error al cargar productos:', err)); 
 }
-
-
-
 
 
 
@@ -54,44 +65,36 @@ function createProductCard(product) {
 
 
 function mapProducts(products, container) {
+    container.innerHTML = '';
+
     const productsFeatured = document.createElement('section');
     productsFeatured.classList.add('products-featured');
 
     const divCont = document.createElement('div');
     divCont.classList.add('cont');
 
-
     const divTitle = document.createElement('div');
     const h2 = document.createElement('h2');
-    h2.innerText = container.dataset.title;
+    h2.innerText = container.dataset.title || '';
     divTitle.appendChild(h2);
-
 
     const divCardsContainer = document.createElement('div');
     divCardsContainer.classList.add('cards-container');
 
-
     products.forEach(product => {
-     const card= createProductCard(product);
-     divCardsContainer.appendChild(card);
+        const card = createProductCard(product.fields);
+        divCardsContainer.appendChild(card);
     });
 
-
     divCont.append(divTitle, divCardsContainer);
-
     productsFeatured.appendChild(divCont);
 
-    productsContent.appendChild(productsFeatured);
+    container.appendChild(productsFeatured);
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-document.querySelectorAll('.products-content[data-json]').forEach(container => {
-    const jsonFile = container.dataset.json;
-    fetch(`data/${jsonFile}`)
-      .then(res => res.json())
-      .then(data => {
-        mapProducts(data.products, container);
-      })
-      .catch(err => console.error('Error al cargar productos:', err));
-  });
-})
+document.addEventListener('DOMContentLoaded', async () => {
+    const containers = document.querySelectorAll('.products-content[data-table]');
+    await Promise.all(
+        Array.from(containers).map(container => getProducts(container))
+    );
+});
