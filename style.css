@@ -318,6 +318,25 @@ footer {
   color: #CCCCCC;
 }
 
+#cart-overlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgb(107, 98, 98); /* o rgba para oscurecer fondo */
+  z-index: 9999; /* más alto que todo */
+  display: none; 
+  flex-direction: column;
+}
+
+.cart-header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20px;
+}
+
 
 /* ===== Media Queries ===== */
 
