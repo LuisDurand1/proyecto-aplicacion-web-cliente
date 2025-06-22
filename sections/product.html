@@ -1,21 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="../style.css">
     <title>TechNova</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="./img/android-chrome-192x192.png" type="image">
 </head>
-
 <body>
-    <header>
+       <header>
         <div class="header-container">
             <div>
-                <a href="./index.html" id="title">
-                    <h1>TechNova</h1>
-                </a>
+             <a href="../index.html" id="title"><h1>TechNova</h1> </a>
             </div>
             <div class="nav-container">
                 <div class="search-container">
@@ -34,10 +29,10 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="./sections/video_cards.html">Placas de video</a> </li>
-                    <li><a href="./sections/peripherals.html">Perifericos</a> </li>
-                    <li><a href="./sections/contact_form.html">Reclamos</a></li>
-                    <li id="cart-icon">
+                    <li><a href="../sections/video_cards.html">Placas de video</a> </li>
+                    <li><a href="../sections/peripherals.html">Perifericos</a> </li>
+                    <li><a href="../sections/contact_form.html">Reclamos</a></li>
+                      <li id="cart-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision"
                             text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd"
                             clip-rule="evenodd" viewBox="0 0 512 448.47" width="16" height="16">
@@ -50,14 +45,7 @@
         </div>
     </header>
     <main>
-        <section class="products-page-home">
-            <div class="products-content" data-title="Productos destacados" data-category="products_featured">
-
-            </div>
-            <div class="products-content" data-title="Ofertas del Mes" data-category="month_offers">
-
-            </div>
-        </section>
+        <div id="product-detail"></div>
     </main>
     <footer>
         <div class="footer-container">
@@ -72,7 +60,7 @@
 
         </div>
     </footer>
-    <div id="cart-overlay">
+        <div id="cart-overlay">
         <div class="cart-container">
             <div class="cart-header">
                 <h2 id="cart-title">Carrito de Compras</h2>
@@ -89,7 +77,6 @@
             </div>
         </div>
     </div>
-    <script src="./script.js"></script>
+    <script src="../script.js"></script>
 </body>
-
 </html>
