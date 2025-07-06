@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <title>TechNova</title>
+    <link rel="icon" href="../img/android-chrome-192x192.png" type="image">
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <div>
+                <a href="/sections/admin.html" id="title">
+                    <h1>TechNova</h1>
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/sections/admin.html">Crear productos</a> </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div id="product-list"></div>
+    </main>
+    <footer>
+        <div class="footer-container">
+            <ul>
+                <li>Politica de privacidad</li>
+                <li>Aviso legal</li>
+                <li>Politica de cookies</li>
+                <li>Cookies</li>
+            </ul>
+
+            <div> &copy; 2025 Productos de Computación. Todos los derechos reservados.</div>
+
+        </div>
+    </footer>
+    <script src="../script.js"></script>
+    <div id="edit-modal" class="modal-overlay" style="display:none;">
+        <div class="modal-content">
+            <span class="close-modal" id="close-edit-modal">&times;</span>
+            <form id="edit-product-form">
+                <img id="edit-product-image" src="" alt="Imagen"
+                    style="width:100px;display:block;margin:0 auto 12px auto;">
+                <input type="text" name="name" id="edit-name" placeholder="Nombre" required
+                    style="margin:4px 0; width:100%;">
+                <input type="number" name="price" id="edit-price" placeholder="Precio" required
+                    style="margin:4px 0; width:100%;">
+                <select name="category" id="edit-category" required style="margin:4px 0; width:100%;">
+                    <option value="">Selecciona categoría</option>
+                    <option value="products_featured">products_featured</option>
+                    <option value="month_offers">month_offers</option>
+                    <option value="peripherals">peripherals</option>
+                    <option value="video_cards">video_cards</option>
+                </select>
+                <textarea name="description" id="edit-description" placeholder="Descripción" required
+                    style="margin:4px 0; width:100%;"></textarea>
+                <input type="text" name="image" id="edit-image" placeholder="URL Imagen" required
+                    style="margin:4px 0; width:100%;">
+                <button type="submit" class="save-btn" style="margin-top:6px;">Guardar</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

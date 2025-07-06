@@ -6,23 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style.css">
     <title>TechNova</title>
-     <link rel="icon" href="./img/android-chrome-192x192.png" type="image">
+     <link rel="icon" href="../img/android-chrome-192x192.png" type="image">
 </head>
 
 <body>
-    <header>
+     <header>
         <div class="header-container">
             <div>
-                <a href="../index.html" id="title">
+                <a href="/sections/admin.html" id="title">
                     <h1>TechNova</h1>
                 </a>
             </div>
+            <nav>
+                <ul>
+                    <li><a href="/sections/admin_edit_products.html">Editar productos</a> </li>
+                </ul>
+            </nav>
         </div>
     </header>
     <main>
         <div id="create-product-form"></div>
-        <div id="product-list">
-        </div>
     </main>
     <footer>
         <div class="footer-container">
@@ -37,24 +40,20 @@
 
         </div>
     </footer>
-    <div id="cart-overlay">
-        <div class="cart-container">
-            <div class="cart-header">
-                <h2 id="cart-title">Carrito de Compras</h2>
-                <div class="close-cart">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="feather feather-x" color="white">
-                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                    </svg>
-                </div>
-            </div>
-            <div class="cart-items">
-            </div>
-        </div>
-    </div>
     <script src="../script.js"></script>
+     <div id="edit-modal" class="modal-overlay" style="display:none;">
+      <div class="modal-content">
+        <span class="close-modal" id="close-edit-modal">&times;</span>
+        <form id="edit-product-form">
+          <img id="edit-product-image" src="" alt="Imagen" style="width:100px;display:block;margin:0 auto 12px auto;">
+          <input type="text" name="name" id="edit-name" placeholder="Nombre" required style="margin:4px 0; width:100%;">
+          <input type="number" name="price" id="edit-price" placeholder="Precio" required style="margin:4px 0; width:100%;">
+          <textarea name="description" id="edit-description" placeholder="Descripción" required style="margin:4px 0; width:100%;"></textarea>
+          <input type="text" name="image" id="edit-image" placeholder="URL Imagen" required style="margin:4px 0; width:100%;">
+          <button type="submit" class="save-btn" style="margin-top:6px;">Guardar</button>
+        </form>
+      </div>
+    </div>
 </body>
 
 </html>

@@ -2,9 +2,22 @@ const API_TOKEN = 'patu4rl1RgVOkZQmf.63aefb3d103dd693730bff34df288a03b8a61bb4957
 const BASE_ID = 'appbMQJ3qhcx04rtO';
 const API_URL = `https://api.airtable.com/v0/${BASE_ID}/products_featured`;
 
+// Retrieve cart products from localStorage or initialize an empty array
 const cartProducts = JSON.parse(localStorage.getItem('cart')) || [];
+const productsContent = document.querySelector('.products-content');
+
+// Initialize empty arrays for different product categories
+let productosPeripherals = [];
+let productosVideoCards = [];
+let productSearch = [];
 
 
+const searchForm = document.getElementById('search-form');
+const searchInput = document.getElementById('search-input');
+
+
+
+//Mobile buttons functions
 function toggleDropdownForOrder() {
     const dropdownMenu = document.querySelector('.dropdown');
     const isVisible = dropdownMenu && dropdownMenu.style.display === 'flex';
@@ -38,9 +51,6 @@ const getProducts = async () => {
     }
 };
 
-
-
-const productsContent = document.querySelector('.products-content');
 
 function createProductCard(product) {
     const divCard = document.createElement('div');
@@ -81,10 +91,7 @@ function createProductCard(product) {
     }
     )
 
-
     divCard.append(divImg, h3, divPrice, divbuyButton);
-
-
 
     return divCard;
 }
@@ -118,9 +125,7 @@ function mapProducts(products, container) {
     container.appendChild(productsFeatured);
 }
 
-let productosPeripherals = [];
-let productosVideoCards = [];
-let productSearch = [];
+
 
 async function renderAllSections() {
     const products = await getProducts();
@@ -269,7 +274,9 @@ async function renderProductDetail() {
         <h2>${product.name}</h2>
         <img src="${product.image}" alt="${product.name}" style="max-width:200px;">
         <p class="price">Precio: $${product.price}</p>
-        <p id="product-description">${product.description || ''}</p>
+        <div class="description-container">
+                <p id="product-description">${product.description || ''}</p>
+        </div>
         `
         ;
 
@@ -289,7 +296,6 @@ async function renderProductDetail() {
     )
 
     detailDiv.appendChild(divbuyButton);
-
 }
 
 
@@ -311,7 +317,7 @@ function renderCreateProductForm() {
     const formDiv = document.getElementById('create-product-form');
     formDiv.innerHTML = `
         <form id="new-product-form">
-            <strong>Crear nuevo producto</strong><br>
+                        <strong>Crear nuevo producto</strong><br>
             <input type="text" name="name" placeholder="Nombre" required style="margin:4px 0; width:100%;">
             <input type="number" name="price" placeholder="Precio" required style="margin:4px 0; width:100%;">
             <select name="category" required style="margin:4px 0; width:100%;">
@@ -338,7 +344,7 @@ function renderCreateProductForm() {
         await createProduct(fields);
         alert('Producto creado');
         form.reset();
-        renderAdminList();
+        renderAdminListToEdit();
     });
 }
 
@@ -398,35 +404,89 @@ function renderProductRow(product) {
     return tr;
 }
 
-async function renderAdminList() {
+async function renderAdminListToEdit() {
     const productList = document.getElementById('product-list');
-    productList.innerHTML = `
-     <strong>Editar productos</strong>
-    <table id="product-table">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Precio</th>
-                <th>Categoría</th>
-                <th>Descripción</th>
-                <th>Imagen</th>
-                <th>Acción</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>`;
-    const tbody = productList.querySelector('tbody');
-    const products = await getProducts();
-    products.forEach(product => {
-        tbody.appendChild(renderProductRow(product));
+    productList.innerHTML = `<strong>Editar productos</strong>
+        <div class="admin-cards-container"></div>`;
+
+    const cardsContainer = productList.querySelector('.admin-cards-container');
+
+    getProducts().then(products => {
+        products.forEach(product => {
+            const card = document.createElement('div');
+            card.className = 'admin-product-card';
+
+            card.innerHTML = `
+                <div class="img-container">   
+                <img src="${product.image}" alt="${product.name}" class="admin-product-img">
+                </div>
+                <div class="admin-product-info">
+                    <h3>${product.name}</h3>
+                    <p class="price">$${product.price}</p>
+                    <button class="edit-btn">Editar</button>
+                </div>
+            `;
+
+            card.querySelector('.edit-btn').addEventListener('click', () => {
+                openEditModal(product);
+            });
+
+            cardsContainer.appendChild(card);
+        });
     });
 }
 
 
+function openEditModal(product) {
+    const modal = document.getElementById('edit-modal');
+    modal.style.display = 'flex';
+
+    document.getElementById('edit-product-image').src = product.image;
+    document.getElementById('edit-name').value = product.name;
+    document.getElementById('edit-price').value = product.price;
+    document.getElementById('edit-category').value = product.category || '';
+    document.getElementById('edit-description').value = product.description || '';
+    document.getElementById('edit-image').value = product.image;
+
+    // Guardar cambios
+    const form = document.getElementById('edit-product-form');
+    form.onsubmit = async (e) => {
+        e.preventDefault();
+        const fields = {
+            name: document.getElementById('edit-name').value,
+            price: parseFloat(document.getElementById('edit-price').value),
+            category: document.getElementById('edit-category').value,
+            description: document.getElementById('edit-description').value,
+            image: document.getElementById('edit-image').value
+        };
+        await updateProduct(product.id, fields);
+        alert('Producto actualizado');
+        modal.style.display = 'none';
+        renderAdminListToEdit();
+    };
+
+    // Cerrar modal
+    document.getElementById('close-edit-modal').onclick = () => {
+        modal.style.display = 'none';
+    };
+    // Cerrar al hacer click fuera del modal
+    modal.onclick = (e) => {
+        if (e.target === modal) modal.style.display = 'none';
+    };
+}
+
+
+if (document.getElementById('create-product-form')){
+    renderCreateProductForm();
+
+}
 
 if (document.getElementById('product-list')) {
-    renderAdminList();
-    renderCreateProductForm();
+    renderAdminListToEdit();
+}
+
+if (document.querySelector('.products-content')) {
+    renderAllSections();
 }
 
 
@@ -435,19 +495,12 @@ if (document.getElementById('product-detail')) {
 }
 
 
-if (document.querySelector('.products-content')) {
-    renderAllSections();
-
-
-}
-
 if (document.getElementById('cart-icon')) {
     showCart();
     closeCart();
 }
 
-const searchForm = document.getElementById('search-form');
-const searchInput = document.getElementById('search-input');
+
 
 if (searchForm && searchInput) {
     searchForm.addEventListener('submit', (e) => {
@@ -490,8 +543,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
 
         const sortProductsSearch = document.getElementById('sort-search');
-    const lowPriceSearchMobile = document.getElementById('low-price-search');
-    const highPriceSearchMobile = document.getElementById('high-price-search');
+        const lowPriceSearchMobile = document.getElementById('low-price-search');
+        const highPriceSearchMobile = document.getElementById('high-price-search');
         sortProductsSearch.addEventListener('change', (e) => {
             renderSortedProducts(filtered, container, e.target.value);
         });
