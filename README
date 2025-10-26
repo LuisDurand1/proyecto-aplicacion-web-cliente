@@ -1,8 +1,8 @@
 # TechNova — Frontend estático
 
-Repositorio del cliente estático de la tienda TechNova. Contiene las páginas HTML, estilos (CSS) y lógica en JavaScript (vanilla) que implementan el catálogo, búsqueda, carrito y un panel de administración. Los datos de productos se consumen desde Airtable (API) y el carrito se persiste en LocalStorage.
+Repositorio del cliente estático de la tienda TechNova. Contiene páginas HTML, estilos (CSS) y lógica en JavaScript (vanilla) que implementan catálogo, búsqueda, carrito y panel de administración. Los datos se consumen desde Airtable (API) y el carrito se persiste en LocalStorage.
 
-Este README documenta cómo usar Docker para obtener la imagen base de nginx desde Docker Hub, construir la imagen personalizada del sitio y ejecutar el contenedor; incluye comandos de build/run, comprobaciones de servicio (curl/docker ps).
+Este README documenta cómo usar Docker para obtener la imagen base de nginx desde Docker Hub, construir la imagen personalizada y ejecutar el contenedor; incluye comandos de build/run y comprobaciones básicas.
 
 ![TechNova screenshot](img/TechNova-Ecommerce.png)
 
@@ -13,70 +13,52 @@ Este README documenta cómo usar Docker para obtener la imagen base de nginx des
 - Docker + nginx (imagen base: `nginx:1.25-alpine`)  
 - Git
 
-Requisitos
----
-- Docker instalado y disponible en línea de comandos.
+## Requisitos
+- Docker instalado y disponible en la línea de comandos:
   - Windows: Docker Desktop (o Docker Engine en WSL2).  
   - macOS: Docker Desktop.  
-  - Linux: Docker Engine (systemd service).
+  - Linux: Docker Engine (systemd).
 - Terminal: PowerShell / CMD (Windows) o Terminal (macOS/Linux).
 - Ejecutar los comandos desde la carpeta raíz del proyecto (donde está el `Dockerfile` y `index.html`), o pasar la ruta al contexto al build.
 
-
-
-
-Construir la imagen (build)
----
-Si estás en la carpeta raíz del proyecto (donde está el Dockerfile e `index.html`)
-
+## Construir la imagen (desde la raíz del proyecto)
 ```bash
-# etiqueta local recomendada
 docker build -t technova-static:latest .
 ```
 
-Ejecutar el contenedor (run)
----
-En foreground (muestra logs en la terminal, se elimina al cerrar con Ctrl+C si usas --rm):
-
+## Ejecutar el contenedor
+En foreground:
 ```bash
 docker run --rm -p 8080:80 technova-static:latest
 ```
 
-En background (detached) y accesible solo desde localhost:
-
+En background (detached) y ligado a localhost:
 ```bash
 docker run -d --name technova -p 127.0.0.1:8080:80 technova-static:latest
 ```
 
-Ver logs y estado
----
-- Ver contenedores en ejecución:
+## Ver logs y estado
 ```bash
 docker ps
-```
-- Ver logs:
-```bash
 docker logs -f technova
-```
-- Parar y eliminar (si está en background):
-```bash
 docker stop technova
 ```
 
-Verificar que el servicio está listo
----
-- Desde la máquina host:
+## Verificar servicio
+- macOS / Linux / Git Bash:
 ```bash
 curl -I http://localhost:8080
-# o en PowerShell:
+```
+- PowerShell:
+```powershell
 Invoke-WebRequest http://localhost:8080 -UseBasicParsing
 ```
-Respuesta `200 OK` indica que nginx está sirviendo `index.html`.
 
-Opcional: descargar explícitamente la imagen base
----
-Puedes hacer el pull manual antes del build:
+Respuesta `HTTP/1.1 200 OK` indica que nginx está sirviendo `index.html`.
 
+## Opcional
+- Descargar la imagen base explícitamente:
 ```bash
 docker pull nginx:1.25-alpine
 ```
+- Añade `.dockerignore` y `HEALTHCHECK` si lo deseas.
