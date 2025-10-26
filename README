@@ -4,7 +4,6 @@ Repositorio del cliente estático de la tienda TechNova. Contiene páginas HTML,
 
 Este README documenta cómo usar Docker para obtener la imagen base de nginx desde Docker Hub, construir la imagen personalizada y ejecutar el contenedor; incluye comandos de build/run y comprobaciones básicas.
 
-![TechNova screenshot](img/TechNova-Ecommerce.png)
 
 ## Tecnologías
 - HTML5, CSS3, JavaScript (vanilla)  
@@ -50,7 +49,7 @@ docker stop technova
 curl -I http://localhost:8080
 ```
 - PowerShell:
-```powershell
+```bash
 Invoke-WebRequest http://localhost:8080 -UseBasicParsing
 ```
 
@@ -61,4 +60,3 @@ Respuesta `HTTP/1.1 200 OK` indica que nginx está sirviendo `index.html`.
 ```bash
 docker pull nginx:1.25-alpine
 ```
-- Añade `.dockerignore` y `HEALTHCHECK` si lo deseas.
