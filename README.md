@@ -4,6 +4,7 @@ Repositorio del cliente estático de la tienda TechNova. Contiene páginas HTML,
 
 Este README documenta cómo usar Docker para obtener la imagen base de nginx desde Docker Hub, construir la imagen personalizada y ejecutar el contenedor; incluye comandos de build/run y comprobaciones básicas.
 
+![TechNova screenshot](img/TechNova-Ecommerce.png)
 
 ## Tecnologías
 - HTML5, CSS3, JavaScript (vanilla)  
